@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+int counter=0;
+
+// USE OF PRINTF() CAUSED SERIOUS ISSUES IN OUTPUT FORMATTING:
+
+void TOH(int n, int a, int b, int c){
+    if(n==1){
+        cout<<"move disk "<<n<<" from rod "<<a<<" to rod "<<c<<endl;
+        ::counter++;
+        return;
+    }
+    if(n>1){
+        TOH(n-1, a, c, b);
+        
+        cout<<"move disk "<<n<<" from rod "<<a<<" to rod "<<c<<endl;
+        ::counter++;
+        TOH(n-1, b, a, c);
+    }
+}
+void solve(){
+    int n;
+    cin>>n;
+    counter=0;
+    TOH(n, 1, 2, 3);
+    cout<<::counter<<endl;
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t;
+    cin>>t;
+    while(t--){
+        solve();
+    }
+	return 0;
+}
